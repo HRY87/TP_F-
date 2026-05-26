@@ -45,7 +45,7 @@ j
 0 → ID del piloto que ocupó esa posición
 1 → puntos obtenidos por llegar a esa posición
 ```
-#Uso de TDA Vector
+Uso de TDA Vector
 ---
 Decidí usar un TDA Vector porque trabajar únicamente con archivos implicaba una tortura constante de abrir y cerrar FILE*.
 
@@ -53,7 +53,7 @@ Además de ser incómodo, personalmente no me parecía una solución óptima.
 
 Con el TDA vector aprovechamos que sea generico y simplificamos bastante el manejo de datos.
 
-#Nota final
+Nota final
 ---
 Disculpen la desprolijidad del código 
 
