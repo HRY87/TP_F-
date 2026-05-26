@@ -11,7 +11,8 @@ Intenté implementar las funcionalidades mínimas **1 y 2**, ya que ambas están
 # Funcionalidad 1
 
 La base ya está hecha.  
-Actualmente solo falta encontrar el lugar correcto donde actualizar `puntos_acumulados` dentro del TDA `Piloto`, que será el encargado de conservar la cantidad de puntos obtenidos durante toda la temporada.
+Actualmente solo falta encontrar el lugar correcto donde actualizar `puntos_acumulados` dentro del TDA `Piloto`, 
+que será el encargado de conservar la cantidad de puntos obtenidos durante toda la temporada.
 
 ---
 
@@ -45,18 +46,18 @@ j
 1 → puntos obtenidos por llegar a esa posición
 ```
 #Uso de TDA Vector
+---
 Decidí usar un TDA Vector porque trabajar únicamente con archivos implicaba una tortura constante de abrir y cerrar FILE*.
 
 Además de ser incómodo, personalmente no me parecía una solución óptima.
 
 Con el TDA vector aprovechamos que sea generico y simplificamos bastante el manejo de datos.
----
 
 #Nota final
-
+---
 Disculpen la desprolijidad del código 
 
 Durante el desarrollo tuve varios mareos y terminé priorizando que funcionara antes que dejarlo prolijo.
 
 Más adelante voy mejorar la organización del proyecto.
----
+
