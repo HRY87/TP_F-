@@ -5,6 +5,7 @@
 
 int registrarCarrera(const char* rutaCarrera, const char* rutaPilotos)
 {
+    int i = 0;
     Carrera carrera;
 
     /**1 - Abrir el archivo**/
@@ -21,7 +22,7 @@ int registrarCarrera(const char* rutaCarrera, const char* rutaPilotos)
     /** 3 - Ingreso de datos de la carrera (manual?)**/
     printf("\nNombre del circuito: ");
     //Buscar manera que lea espacio
-    scanf("%19s", carrera.circuito);
+    scanf("%19[^\n]", carrera.circuito);
 
     printf("\nFecha (AAAAMMDD): ");
     scanf("%llu", &carrera.fecha);
@@ -36,8 +37,7 @@ int registrarCarrera(const char* rutaCarrera, const char* rutaPilotos)
     }
 
     /**5 - Ingreso de resultados**/
-    while(carrera.cant_resultados--)
-    {
+    for(i=0; i<carrera.cant_resultados; i++){
 
     }
 

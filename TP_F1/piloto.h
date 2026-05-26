@@ -1,6 +1,7 @@
 #ifndef PILOTO_H_INCLUDED
 #define PILOTO_H_INCLUDED
 
+#include "juego.h"
 #define RUTA_PILOTO_TXT                "piloto.txt"
 #define RUTA_PILOTO_BIN                "piloto.bin"
 #define ESTADO_ACTIVO_PILOTO            'A'

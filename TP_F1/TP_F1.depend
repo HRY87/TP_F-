@@ -1,0 +1,38 @@
+# depslib dependency file v1.0
+1779743492 source:c:\users\zoe perez\desktop\tp_f-\tp_f1\carrera.c
+	<stdio.h>
+	"utilidades.h"
+	"carrera.h"
+	"piloto.h"
+
+1779737328 c:\users\zoe perez\desktop\tp_f-\tp_f1\utilidades.h
+
+1779737328 c:\users\zoe perez\desktop\tp_f-\tp_f1\carrera.h
+
+1779739862 c:\users\zoe perez\desktop\tp_f-\tp_f1\piloto.h
+	"juego.h"
+
+1779737328 source:c:\users\zoe perez\desktop\tp_f-\tp_f1\escuderia.c
+
+1779737328 source:c:\users\zoe perez\desktop\tp_f-\tp_f1\piloto.c
+	<stdio.h>
+	<stdlib.h>
+	"piloto.h"
+	"utilidades.h"
+
+1779737328 source:c:\users\zoe perez\desktop\tp_f-\tp_f1\utilidades.c
+	<stdio.h>
+	<stdlib.h>
+	"utilidades.h"
+
+1779741846 c:\users\zoe perez\desktop\tp_f-\tp_f1\juego.h
+	<stdio.h>
+	<stdlib.h>
+
+1779741314 source:c:\users\zoe perez\desktop\tp_f-\tp_f1\main.c
+	"juego.h"
+
+1779743492 source:c:\users\zoe perez\desktop\tp_f-\tp_f1\juego.c
+	"juego.h"
+	"piloto.h"
+
