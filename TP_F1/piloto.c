@@ -101,24 +101,22 @@ size_t listarPilotos(const char* rutaBin)
     return listados;
 }
 
-size_t obtenerCantidadDePilotosActivos(const char* rutaBin)
+int cargarVectorPilotoActivos(const char* rutaBin, tVector* vIds, Comparar comparar)
 {
     Piloto piloto;
-    size_t activos = 0;
 
-    FILE* fBin = fopen(rutaBin, "rb");
+    FILE* fPiloto = fopen(rutaBin, "rb");
 
-    if(!fBin)
-        return activos;
+    if(!fPiloto)
+        return ERR_ARCH;
 
-
-    while(fread(&piloto, sizeof(Piloto), 1, fBin) == 1)
+    while(fread(&piloto, sizeof(Piloto), 1, fPiloto) == 1)
     {
         if(piloto.estado == ESTADO_ACTIVO_PILOTO)
-            activos++;
+            insertarVectorOrd(vIds, & piloto.id, comparar);
     }
 
-    fclose(fBin);
+    fclose(fPiloto);
 
-    return activos;
+    return TODO_OK;
 }

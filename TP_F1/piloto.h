@@ -1,6 +1,8 @@
 #ifndef PILOTO_H_INCLUDED
 #define PILOTO_H_INCLUDED
 
+#include "vector.h"
+
 #define RUTA_PILOTO_TXT                "piloto.txt"
 #define RUTA_PILOTO_BIN                "piloto.bin"
 #define ESTADO_ACTIVO_PILOTO            'A'
@@ -24,6 +26,5 @@ int generarArchivoTxt(const char* rutaTxt);
 int cargarArchivoPilotos(const char* pathTxt, const char* rutaBin);
 size_t listarPilotos(const char* rutaBin);
 //Usar filtre ???
-size_t obtenerCantidadDePilotosActivos(const char* rutaBin);
-
+int cargarVectorPilotoActivos(const char* rutaBin, tVector* vIds, Comparar comparar);
 #endif // PILOTO_H_INCLUDED
