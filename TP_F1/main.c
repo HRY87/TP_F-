@@ -4,9 +4,9 @@
 #include "piloto.h"
 #include "carrera.h"
 
-static void inicializarSistema();
+static void inicializarSistema(void);
 static int archivoExiste(const char *ruta);
-static int mostrarMenu();
+static int mostrarMenu(void);
 
 int main()
 {
@@ -22,10 +22,12 @@ int main()
         switch (opcion)
         {
         case 1:
+            recalcularPuntosPilotos(RUTA_CARRERA_BIN, RUTA_PILOTO_BIN);
             listarPilotos(RUTA_PILOTO_BIN);
             break;
         case 2:
             registrarCarrera(RUTA_CARRERA_BIN, RUTA_PILOTO_BIN, compararUnsigned);
+            recalcularPuntosPilotos(RUTA_CARRERA_BIN, RUTA_PILOTO_BIN);
             mostrarArchivoBinario(RUTA_CARRERA_BIN, &carrera, sizeof(Carrera), mostrarCarrera);
             break;
         default:
@@ -51,7 +53,7 @@ static int archivoExiste(const char *ruta)
     return 1;
 }
 
-static void inicializarSistema()
+static void inicializarSistema(void)
 {
     printf("--- Inicializando sistema ---\n");
 
@@ -80,7 +82,7 @@ static void inicializarSistema()
     printf("----------------------------\n\n");
 }
 
-static int mostrarMenu()
+static int mostrarMenu(void)
 {
     int opcion;
 
