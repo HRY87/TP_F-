@@ -1,14 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "piloto.h"
+#include "carrera.h"
 
-static void inicializarSistema();
+static void inicializarSistema(void);
 static int archivoExiste(const char *ruta);
-static int mostrarMenu();
+static int mostrarMenu(void);
 
 int main()
 {
     int opcion;
+    Carrera carrera;
 
     inicializarSistema();
 
@@ -19,7 +22,13 @@ int main()
         switch (opcion)
         {
         case 1:
+            recalcularPuntosPilotos(RUTA_CARRERA_BIN, RUTA_PILOTO_BIN);
             listarPilotos(RUTA_PILOTO_BIN);
+            break;
+        case 2:
+            registrarCarrera(RUTA_CARRERA_BIN, RUTA_PILOTO_BIN, compararUnsigned);
+            recalcularPuntosPilotos(RUTA_CARRERA_BIN, RUTA_PILOTO_BIN);
+            mostrarArchivoBinario(RUTA_CARRERA_BIN, &carrera, sizeof(Carrera), mostrarCarrera);
             break;
         default:
             printf("[!] Opcion invalida.\n\n");
@@ -44,13 +53,15 @@ static int archivoExiste(const char *ruta)
     return 1;
 }
 
-static void inicializarSistema()
+static void inicializarSistema(void)
 {
     printf("--- Inicializando sistema ---\n");
 
+    srand((unsigned)time(NULL));
+
     if (!archivoExiste(RUTA_PILOTO_TXT))
     {
-        generarArchivoTxt(RUTA_PILOTO_TXT);
+        generarArchivoPilotosTxt(RUTA_PILOTO_TXT);
     }
     else
     {
@@ -71,7 +82,7 @@ static void inicializarSistema()
     printf("----------------------------\n\n");
 }
 
-static int mostrarMenu()
+static int mostrarMenu(void)
 {
     int opcion;
 
@@ -79,6 +90,7 @@ static int mostrarMenu()
     printf("|   GESTION TEMPORADA F1 2026      |\n");
     printf("|==================================|\n");
     printf("|  1. Listar pilotos y sus puntos  |\n");
+    printf("|  2. Registrar carrera            |\n");
     printf("|  0. Salir                        |\n");
     printf("+==================================+\n");
     printf("Opcion: ");

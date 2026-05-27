@@ -1,25 +1,24 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "piloto.h"
 #include "utilidades.h"
 
-int generarArchivoTxt(const char* rutaTxt)
+int generarArchivoPilotosTxt(const char* rutaTxt)
 {
-    FILE* fTxt = fopen(rutaTxt, "wt");
+    Piloto lote[10] = {
+        {1,  "Max Verstappen",  "Neerlandes",  1, 0, ESTADO_ACTIVO_PILOTO, 19970930},
+        {2,  "Lando Norris",    "Britanico",   2, 0, ESTADO_ACTIVO_PILOTO, 19991113},
+        {3,  "Charles Leclerc", "Monegasco",   3, 0, ESTADO_ACTIVO_PILOTO, 19971016},
+        {4,  "Oscar Piastri",   "Australiano", 2, 0, ESTADO_ACTIVO_PILOTO, 20010406},
+        {5,  "Carlos Sainz",    "Espanol",     4, 0, ESTADO_ACTIVO_PILOTO, 19940901},
+        {6,  "George Russell",  "Britanico",   1, 0, ESTADO_ACTIVO_PILOTO, 19980215},
+        {7,  "Lewis Hamilton",  "Britanico",   3, 0, ESTADO_ACTIVO_PILOTO, 19850107},
+        {8,  "Fernando Alonso", "Espanol",     5, 0, ESTADO_ACTIVO_PILOTO, 19810729},
+        {9,  "Lance Stroll",    "Canadiense",  5, 0, ESTADO_ACTIVO_PILOTO, 19981029},
+        {10, "Nico Hulkenberg", "Aleman",      6, 0, ESTADO_ACTIVO_PILOTO, 19870819}
+    };
 
-    if(!fTxt)
-        return ERR_ARCH;
-
-    fprintf(fTxt, "1,Max Verstappen,Neerlandes,1,0,A,20020930\n");
-    fprintf(fTxt, "2,Lewis Hamilton,Britanico,2,0,A,19850107\n");
-    fprintf(fTxt, "3,Charles Leclerc,Monegasco,3,0,A,19971016\n");
-    fprintf(fTxt, "4,Carlos Sainz,Espanol,3,0,A,19940901\n");
-    fprintf(fTxt, "5,Fernando Alonso,Espanol,4,0,A,19810729\n");
-
-    fclose(fTxt);
-    return TODO_OK;
+    return generarArchivoTexto(rutaTxt, lote, 10, sizeof(Piloto), escribirPilotoTxt);
 }
-
 int cargarArchivoPilotos(const char* rutaTxt, const char* rutaBin)
 {
     Piloto piloto;
@@ -101,24 +100,55 @@ size_t listarPilotos(const char* rutaBin)
     return listados;
 }
 
-size_t obtenerCantidadDePilotosActivos(const char* rutaBin)
+/**Funciones para manejo de datos TDA vector**/
+//Filter
+int esPilotoActivos(const void* dato)
+{
+    Piloto* p = (Piloto*)dato;
+
+    return(p->estado == ESTADO_ACTIVO_PILOTO);
+}
+
+//Reduce
+int sumarPuntos(void* acumulador, const void* dato)
+{
+    Piloto* p = (Piloto*)dato;
+
+    *(unsigned*)acumulador += p->puntos_acumulados;
+
+    return TODO_OK;
+}
+
+//Map
+int extraerIdPuntos(void* dest, const void* orig)
+{
+    unsigned* resultado = (unsigned*)dest;
+    Piloto* p = (Piloto*)orig;
+
+    resultado[COL_ID_PILOTO] = p->id;
+    resultado[COL_PUNTOS] = p->puntos_acumulados;
+
+    return TODO_OK;
+}
+
+
+int cargarVectorPilotoActivos(const char* rutaBin, tVector* vIds, Comparar comparar)
 {
     Piloto piloto;
-    size_t activos = 0;
 
-    FILE* fBin = fopen(rutaBin, "rb");
+    FILE* fPiloto = fopen(rutaBin, "rb");
 
-    if(!fBin)
-        return activos;
+    if(!fPiloto)
+        return ERR_ARCH;
 
-
-    while(fread(&piloto, sizeof(Piloto), 1, fBin) == 1)
+    while(fread(&piloto, sizeof(Piloto), 1, fPiloto) == 1)
     {
         if(piloto.estado == ESTADO_ACTIVO_PILOTO)
-            activos++;
+            insertarVectorOrd(vIds, & piloto.id, comparar);
     }
 
-    fclose(fBin);
+    fclose(fPiloto);
 
-    return activos;
+    return TODO_OK;
 }
+

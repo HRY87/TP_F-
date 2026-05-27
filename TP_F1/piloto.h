@@ -1,6 +1,8 @@
 #ifndef PILOTO_H_INCLUDED
 #define PILOTO_H_INCLUDED
 
+#include "vector.h"
+
 #define RUTA_PILOTO_TXT                "piloto.txt"
 #define RUTA_PILOTO_BIN                "piloto.bin"
 #define ESTADO_ACTIVO_PILOTO            'A'
@@ -8,6 +10,10 @@
 #define ESTADO_SUSPENDIDO_PILOTO        'S'
 #define TAM_NOMBRE_PILOTO               30
 #define TAM_NACIONALIDAD                30
+
+//No se donde #$!"#! meter esto
+#define COL_ID_PILOTO               0
+#define COL_PUNTOS                  1
 
 typedef struct {
     unsigned id;
@@ -19,11 +25,14 @@ typedef struct {
     unsigned long long fechaNacimiento;
 }Piloto;
 
-
-int generarArchivoTxt(const char* rutaTxt);
+int generarArchivoPilotosTxt(const char* rutaTxt);
 int cargarArchivoPilotos(const char* pathTxt, const char* rutaBin);
 size_t listarPilotos(const char* rutaBin);
-//Usar filtre ???
-size_t obtenerCantidadDePilotosActivos(const char* rutaBin);
 
+/**Funciones para manejo de datos TDA vector**/
+int esPilotoActivos(const void* dato);
+int sumarPuntos(void* acumulador, const void* dato);
+int extraerIdPuntos(void* dest, const void* orig);
+
+int cargarVectorPilotoActivos(const char* rutaBin, tVector* vIds, Comparar comparar);
 #endif // PILOTO_H_INCLUDED
