@@ -14,6 +14,7 @@ La base ya está hecha.
 Actualmente solo falta encontrar el lugar correcto donde actualizar `puntos_acumulados` dentro del TDA `Piloto`, 
 que será el encargado de conservar la cantidad de puntos obtenidos durante toda la temporada.
 
+Actualizacion: Encontra una forma usando la funcion recalcularPuntosPilotos en carrera.c (No se si es eficiente pero hace su cometido)
 ---
 
 # Funcionalidad 2
@@ -60,4 +61,6 @@ Disculpen la desprolijidad del código
 Durante el desarrollo tuve varios mareos y terminé priorizando que funcionara antes que dejarlo prolijo.
 
 Más adelante voy mejorar la organización del proyecto.
+
+Actualizacion: Ya mejore mejor el codigo, todavia hay cosas que sobran pero ya los quitare, intente implementar generico y TDAVector para facilitar el codigo (quiero morir...)
 
