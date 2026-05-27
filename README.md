@@ -51,13 +51,5 @@ Además de ser incómodo, personalmente no me parecía una solución óptima.
 
 Con el TDA vector aprovechamos que sea generico y simplificamos bastante el manejo de datos.
 
-Nota final
----
-Disculpen la desprolijidad del código 
-
-Durante el desarrollo tuve varios mareos y terminé priorizando que funcionara antes que dejarlo prolijo.
-
-Más adelante voy mejorar la organización del proyecto.
-
 Actualizacion: Ya mejore mejor el codigo, todavia hay cosas que sobran pero ya los quitare, intente implementar generico y TDAVector para facilitar el codigo (quiero morir...)
-
+---
