@@ -1,10 +1,7 @@
-# Versión 0.2
+# Version Actualizada
 
 ## Importante
-⚠️ **NO ES UNA VERSIÓN COMPLETA**  
-Todavía faltan pruebas y correcciones, pero al menos el sistema ya no se rompe.
-
-Intenté implementar las funcionalidades mínimas **1 y 2**, ya que ambas están relacionadas entre sí.
+Version funcional con funcionalidad 1 y 2
 
 ---
 
